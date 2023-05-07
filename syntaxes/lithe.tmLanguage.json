@@ -1,0 +1,188 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Lithe",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"include": "#constants"
+		},
+		{
+			"include": "#types"
+		},
+		{
+			"include": "#functions"
+		},
+		{
+			"include": "#builtins"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.lithe",
+					"match": "\\b(if|else|begin|end|return|private)\\b"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.lithe",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.lithe",
+					"match": "\\\\."
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"begin": "~~:",
+					"end": ":~~",
+					"name": "comment.block.lithe"
+				},
+				{
+					"name": "comment.block.empty.lithe",
+					"match": "~~::~~"
+				},
+				{
+					"name": "comment.line.lithe",
+					"begin": "~~",
+					"end": "\\n"
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [
+				{
+					"name": "constant.numeric.lithe",
+					"match": "\\d+(f\\d*)?"
+				}
+			]
+		},
+		"constants": {
+			"patterns": [
+				{
+					"name": "constant.language.lithe",
+					"match": "\\b(TRUE|FALSE|NULL)\\b"
+				}
+			]
+		},
+		"types": {
+			"patterns": [
+				{
+					"match": "\\b(TYPE) ([A-Za-z_]\\w*) ?(\\[(([A-Za-z_]\\w*)? ??( [A-Za-z_]\\w*)*) ?\\])?",
+					"captures": {
+						"1": {
+							"name": "support.type.lithe"
+						},
+						"2": {
+							"name": "entity.name.type.lithe"
+						},
+						"4": {
+							"name": "entity.name.type.lithe"
+						},
+						"5": {
+							"name": "entity.name.type.lithe"
+						},
+						"6": {
+							"name": "entity.name.type.lithe"
+						}
+					}
+				},
+				{
+					"match": "\\b(PROTOCOL) ([A-Za-z_]\\w*) ?(\\[(([A-Za-z_]\\w*)? ??( [A-Za-z_]\\w*)*) ?\\])?",
+					"captures": {
+						"1": {
+							"name": "support.type.lithe"
+						},
+						"2": {
+							"name": "entity.name.type.lithe"
+						},
+						"4": {
+							"name": "entity.name.type.lithe"
+						},
+						"5": {
+							"name": "entity.name.type.lithe"
+						},
+						"6": {
+							"name": "entity.name.type.lithe"
+						}
+					}
+				}
+			]
+		},
+		"functions": {
+			"patterns": [
+				{
+					"comment": "TODO: fix it",
+					"match": "\\b((FUNCTION)\\[\\[((([A-Za-z_]\\w*) ?(\\[(([A-Za-z_]\\w*)? ??( [A-Za-z_]\\w*)*) ?\\])?|(\\$))? ??( ([A-Za-z_]\\w*) ?(\\[(([A-Za-z_]\\w*)? ??( [A-Za-z_]\\w*)*) ?\\])?)*) ?\\] (([A-Za-z_]\\w*) ?(\\[(([A-Za-z_]\\w*)? ??( [A-Za-z_]\\w*)*) ?\\])?|(\\$))\\]) ([A-Za-z_]\\w*)",
+					"captures": {
+						"2": {
+							"name": "support.type.lithe"
+						},
+						"5": {
+							"name": "entity.name.type.lithe"
+						},
+						"7": {
+							"name": "entity.name.type.lithe"
+						},
+						"10": {
+							"name": "entity.name.type.lithe"
+						},
+						"12": {
+							"name": "entity.name.type.lithe"
+						},
+						"14": {
+							"name": "entity.name.type.lithe"
+						},
+						"18": {
+							"name": "entity.name.type.lithe"
+						},
+						"20": {
+							"name": "entity.name.type.lithe"
+						},
+						"23": {
+							"name": "entity.name.type.lithe"
+						},
+						"24": {
+							"name": "entity.name.function.lithe"
+						}
+					}
+				}
+			]
+		},
+		"builtins": {
+			"patterns": [
+				{
+					"name": "support.type.lithe",
+					"match": "\\b(AUTO|NAMESPACE|TYPE|TYPEVAR|PROTOCOL|FUNCTION|RECORD|INT|UINT|BOOL|TEXT|BYTES|ARRAY|ITER)\\b"
+				},
+				{
+					"comment": "True built-in functions",
+					"name": "support.function.lithe",
+					"match": "\\b(Append|New|Main)\\b"
+				},
+				{
+					"comment": "Stdlib functions",
+					"name": "support.function.lithe",
+					"match": "\\b(Slice|Range|Union|ErrPrintLn|ErrPrint|PrintLn|Print|ErrPrint)\\b"
+				}
+			]
+		}
+	},
+	"scopeName": "source.lithe"
+}

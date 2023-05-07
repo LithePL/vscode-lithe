@@ -1,0 +1,26 @@
+{
+  "name": "lithe",
+  "displayName": "lithe",
+  "description": "A simple extension to highlight Lithe files.",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.78.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "repository": "https://github.com/qexat/lithe-vscode",
+  "contributes": {
+    "languages": [{
+      "id": "lithe",
+      "aliases": ["Lithe", "lithe"],
+      "extensions": [".lithe", ".dlithe"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "lithe",
+      "scopeName": "source.lithe",
+      "path": "./syntaxes/lithe.tmLanguage.json"
+    }]
+  }
+}
